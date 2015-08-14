@@ -1,0 +1,724 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<%@ page import="com.amazonaws.*"%>
+<%@ page import="com.amazonaws.auth.*"%>
+<%@ page import="com.amazonaws.services.ec2.*"%>
+<%@ page import="com.amazonaws.services.ec2.model.*"%>
+<%@ page import="com.amazonaws.services.s3.*"%>
+<%@ page import="com.amazonaws.services.s3.model.*"%>
+<%@ page import="com.amazonaws.services.dynamodbv2.*"%>
+<%@ page import="com.amazonaws.services.dynamodbv2.model.*"%>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="Yuna Lee Georgia Tech Alpha Kappa Psi">
+
+<title>One Campus</title>
+
+<!-- Bootstrap Core CSS -->
+<link href="styles/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="styles/dist/css/bootstrap-social.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="styles/dist/css/stylish-portfolio.css" rel="stylesheet">
+
+<!-- Custom Fonts -->
+
+<link href="styles/dist/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400' rel='stylesheet' type='text/css'>
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+	<!-- Navigation -->
+	<a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i
+		class="fa fa-bars"></i></a>
+	<nav id="sidebar-wrapper">
+		<ul class="sidebar-nav">
+			<a id="menu-close" href="#"
+				class="btn btn-light btn-lg pull-right toggle"><i
+				class="fa fa-times"></i></a>
+			<li class="sidebar-brand"><a href="#top" onclick=$("#menu-close").click(); >One
+					Campus</a></li>
+			<li><a href="#top" onclick=$("#menu-close").click(); >Home</a></li>
+			<li><a href="#about" onclick=$("#menu-close").click(); >About</a>
+			</li>
+			<li><a href="#services" onclick=$("#menu-close").click(); >Services</a>
+			</li>
+			<li><a href="#portfolio" onclick=$("#menu-close").click(); >Mission</a>
+			</li>
+			<li><a href="#contact" onclick=$("#menu-close").click(); >Contact</a></li>
+		</ul>
+	</nav>
+
+	<!-- Header -->
+	<header id="top" class="header">
+		<div class="text-vertical-center">
+			<!-- 
+			<div  class="h1" id="msg">
+				<span id="text_target" ></span>
+			</div>-->
+			<div class="h1 text_paragraph">
+			<p>Welcome to ONE CAMPUS</p></div>
+			<h3 style="text-align: center">One Powerful Tool within Campus</h3>
+			<br> <a href="#about" class="btn btn-dark btn-lg" onclick=$("#menu-close").click();>Find
+				Out More</a> <a href="#signup" class="btn btn-dark btn-lg" onclick=$("#menu-close").click();>Start
+				ONE CAMPUS</a>
+		</div>
+	</header>
+
+	<!-- About -->
+	<section id="about" class="about">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<h2>One Campus makes the Campus become One	</h2>
+					<p class="lead">
+						<a target="_blank"
+							href="#signup">Get Started Now!</a>
+					</p>
+				</div>
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /.container -->
+	</section>
+
+	<!-- Services -->
+	<!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
+	<section id="services" class="services bg-primary">
+		<div class="container">
+			<div class="row text-center">
+				<div class="col-lg-10 col-lg-offset-1">
+					<h2>Services</h2>
+					<hr class="small">
+					<div class="row">
+						<div class="col-md-3 col-sm-6">
+							<div class="service-item">
+								<span class="fa-stack fa-4x"> <i
+									class="fa fa-circle fa-stack-2x"></i> <i
+									class="fa fa-cloud fa-stack-1x text-primary"></i>
+								</span>
+								<h4>
+									<strong>Service Name</strong>
+								</h4>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+								<a href="#" class="btn btn-light">Learn More</a>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6">
+							<div class="service-item">
+								<span class="fa-stack fa-4x"> <i
+									class="fa fa-circle fa-stack-2x"></i> <i
+									class="fa fa-compass fa-stack-1x text-primary"></i>
+								</span>
+								<h4>
+									<strong>Service Name</strong>
+								</h4>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+								<a href="#" class="btn btn-light">Learn More</a>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6">
+							<div class="service-item">
+								<span class="fa-stack fa-4x"> <i
+									class="fa fa-circle fa-stack-2x"></i> <i
+									class="fa fa-flask fa-stack-1x text-primary"></i>
+								</span>
+								<h4>
+									<strong>Service Name</strong>
+								</h4>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+								<a href="#" class="btn btn-light">Learn More</a>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-6">
+							<div class="service-item">
+								<span class="fa-stack fa-4x"> <i
+									class="fa fa-circle fa-stack-2x"></i> <i
+									class="fa fa-shield fa-stack-1x text-primary"></i>
+								</span>
+								<h4>
+									<strong>Service Name</strong>
+								</h4>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+								<a href="#" class="btn btn-light">Learn More</a>
+							</div>
+						</div>
+					</div>
+					<!-- /.row (nested) -->
+				</div>
+				<!-- /.col-lg-10 -->
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /.container -->
+	</section>
+
+	<!-- Callout -->
+	<aside class="callout">
+		<div class="text-vertical-center">
+			<h1>Expand Your Network</h1>
+		</div>
+	</aside>
+
+	<!-- Portfolio -->
+	<section id="portfolio" class="portfolio">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-10 col-lg-offset-1 text-center">
+					<h2>Our Mission</h2>
+					<hr class="small">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="portfolio-item">
+								<a href="#"> <img class="img-portfolio img-responsive"
+									src="styles/dist/img/portfolio-1.jpg">
+								</a>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="portfolio-item">
+								<a href="#"> <img class="img-portfolio img-responsive"
+									src="styles/dist/img/portfolio-2.jpg">
+								</a>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="portfolio-item">
+								<a href="#"> <img class="img-portfolio img-responsive"
+									src="styles/dist/img/portfolio-3.jpg">
+								</a>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="portfolio-item">
+								<a href="#"> <img class="img-portfolio img-responsive"
+									src="styles/dist/img/portfolio-4.jpg">
+								</a>
+							</div>
+						</div>
+					</div>
+					<!-- /.row (nested) -->
+					<a href="#" class="btn btn-dark">View More Items</a>
+				</div>
+				<!-- /.col-lg-10 -->
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /.container -->
+	</section>
+
+	<!-- Call to Action -->
+	<section id="signup" class="call-to-action bg-primary">
+		<div class="container">
+			<div class="row">
+				<div class="form2" id="form2">
+
+					<ul class="tab-group2" id="tab-group2">
+						<li class="tab2 active"><a target="#signup2">Sign Up</a></li>
+						<li class="tab2"><a target="#login2">Log In</a></li>
+					</ul>
+
+					<div class="tab-content2" id="tab-content2">
+						<div id="signup2">
+							<form role="form" action="home.jsp">
+								<div class="field-wrap2">
+									<label> Phone Number<span class="req">*</span>
+									</label> <input type="text" name="txtInput"
+										onkeydown="javascript:backspacerDOWN(this,event);"
+										onkeyup="javascript:backspacerUP(this,event);" />
+
+								</div>
+								<!--	<label> Enter Link to Your Facebook (recommended, but not
+								optional) </label>
+						 	<div class="field-wrap2">
+
+								<span
+									style="position: absolute; margin-top: 17px; margin-left: 10px">facebook.com/</span>
+								<input type="text" required autocomplete="off"
+									style="padding-left: 94px" />
+							</div> -->
+
+								<div class="top-row" id=top-row>
+									<div class="field-wrap2">
+										<label> First Name<span class="req">*</span>
+										</label> <input type="text" required autocomplete="off" />
+									</div>
+
+									<div class="field-wrap2">
+										<label> Last Name<span class="req">*</span>
+										</label> <input type="text" required autocomplete="off" />
+									</div>
+								</div>
+
+								<div class="field-wrap2">
+									<label>Email Address<span class="req">*</span>
+									</label> <br> <input type="email" required autocomplete="off"
+										style="width: 48%; display: inline-block" /> <label
+										style="margin-left: 10px; display: inline-block">@gatech.edu</label>
+
+								</div>
+
+								<div class="field-wrap2">
+									<label> Set A Password<span class="req">*</span>
+									</label> <input type="password" required autocomplete="off" />
+								</div>
+
+								<button type="submit" class="button2 button-block2">Get
+									Started</button>
+
+							</form>
+						</div>
+
+
+						<div id="login2">
+							<br> <br>
+
+							<form action="home.jsp" method="post">
+								<div class="field-wrap2">
+									<label>Sign In With</label>
+
+
+									<ul class="list-inline">
+										<li style="padding-right: 0px; padding-left: 0px"><a
+											class="btn btn-block btn-social-icon btn-facebook"
+											style="margin-left: 0px; margin-right: 0px; width: 34px">
+												<i class="fa fa-facebook"></i>
+										</a></li>
+										<li style="padding-right: 0px; padding-left: 0px"><a
+											class="btn btn-block btn-social-icon btn-microsoft"
+											style="margin-left: 0px; margin-right: 0px; width: 34px">
+												<i class="fa fa-windows"></i>
+										</a></li>
+										<li style="padding-right: 0px; padding-left: 0px"><a
+											class="btn btn-block btn-social-icon btn-google"
+											style="margin-left: 0px; margin-right: 0px; width: 34px">
+												<i class="fa fa-google"></i>
+										</a></li>
+										<li style="padding-right: 0px; padding-left: 0px"><a
+											class="btn btn-block btn-social-icon btn-github"
+											style="margin-left: 0px; margin-right: 0px; width: 34px">
+												<i class="fa fa-github"></i>
+										</a></li>
+										<li style="padding-right: 0px; padding-left: 0px"><a
+											class="btn btn-block btn-social-icon btn-pinterest"
+											style="margin-left: 0px; margin-right: 0px; width: 34px">
+												<i class="fa fa-pinterest"></i>
+										</a></li>
+										<li style="padding-right: 0px; padding-left: 0px"><a
+											class="btn btn-block btn-social-icon btn-reddit"
+											style="margin-left: 0px; margin-right: 0px; width: 34px">
+												<i class="fa fa-reddit"></i>
+										</a></li>
+										<li style="padding-right: 0px; padding-left: 0px"><a
+											class="btn btn-block btn-social-icon btn-twitter"
+											style="margin-left: 0px; margin-right: 0px; width: 34px">
+												<i class="fa fa-twitter"></i>
+										</a></li>
+										<li style="padding-right: 0px; padding-left: 0px"><a
+											class="btn btn-block btn-social-icon btn-openid"
+											style="margin-left: 0px; margin-right: 0px; width: 34px">
+												<i class="fa fa-openid"></i>
+										</a></li>
+										<li style="padding-right: 0px; padding-left: 0px"><a
+											class="btn btn-block btn-social-icon btn-instagram"
+											style="margin-left: 0px; margin-right: 0px; width: 34px">
+												<i class="fa fa-instagram"></i>
+										</a></li>
+										<li style="padding-right: 0px; padding-left: 0px"><a
+											class="btn btn-block btn-social-icon btn-foursquare"
+											style="margin-left: 0px; margin-right: 0px; width: 34px">
+												<i class="fa fa-foursquare"></i>
+										</a></li>
+										<li style="padding-right: 0px; padding-left: 0px"><a
+											class="btn btn-block btn-social-icon btn-linkedin"
+											style="margin-left: 0px; margin-right: 0px; width: 34px">
+												<i class="fa fa-linkedin"></i>
+										</a></li>
+										<li style="padding-right: 0px; padding-left: 0px"><a
+											class="btn btn-block btn-social-icon btn-flickr"
+											style="margin-left: 0px; margin-right: 0px; width: 34px">
+												<i class="fa fa-flickr"></i>
+										</a></li>
+										<li style="padding-right: 0px; padding-left: 0px"><a
+											class="btn btn-block btn-social-icon btn-vimeo"
+											style="margin-left: 0px; margin-right: 0px; width: 34px">
+												<i class="fa fa-vimeo-square"></i>
+										</a></li>
+										<li style="padding-right: 0px; padding-left: 0px"><a
+											class="btn btn-block btn-social-icon btn-yahoo"
+											style="margin-left: 0px; margin-right: 0px; width: 34px">
+												<i class="fa fa-yahoo"></i>
+										</a></li>
+
+
+
+									</ul>
+
+
+
+								</div>
+								<div class="field-wrap2">
+
+
+									<label> Email Address<span class="req">*</span>
+									</label> <input type="email" required autocomplete="off" />
+								</div>
+
+								<div class="field-wrap2">
+									<label> Password<span class="req">*</span>
+									</label> <input type="password" id="password" required
+										autocomplete="off" />
+								</div>
+
+								<p class="forgot2" id="forgot2">
+									<a href="#">Forgot Password?</a>
+								</p>
+
+								<button type="submit" class="button2 button-block2">Enter
+									One Campus</button>
+
+							</form>
+
+						</div>
+
+					</div>
+					<!-- tab-content -->
+
+				</div>
+				<!-- /form -->
+			</div>
+		</div>
+	</section>
+
+
+	<!-- Footer -->
+	<section id="contact">
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-10 col-lg-offset-1 text-center">
+						<h4>
+							<strong>Start One Campus</strong>
+						</h4>
+						<p>
+							530 Piedmont Ave NE<br>Atlanta, GA 30308
+						</p>
+						<ul class="list-unstyled">
+							<li><i class="fa fa-phone fa-fw"></i> (404) 709-6398</li>
+							<li><i class="fa fa-envelope-o fa-fw"
+								style="color: #337ab7;"></i> <a href="yuna0118@outlook.com"
+								style="color: #337ab7;">Email the Team!</a></li>
+						</ul>
+						<br>
+						<ul class="list-inline">
+							<li><a href="#"><i class="fa fa-facebook fa-fw fa-3x"
+									style="color: #337ab7;"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter fa-fw fa-3x"
+									style="color: #337ab7;"></i></a></li>
+							<li><a href="#"><i class="fa fa-dribbble fa-fw fa-3x"
+									style="color: #337ab7;"></i></a></li>
+						</ul>
+						<hr class="small">
+						<p class="text-muted">Copyright &copy; One Campus 2015</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</section>
+
+	<!-- jQuery -->
+	<script src="styles/dist/js/jquery.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+	<script type="text/javascript">
+				$(document).ready(function() {
+					
+					$('.formNotice span').click(function() {
+						$("#logForm").toggle();
+						$("#regForm").toggle();
+					});
+					
+						
+				});
+				var zChar = new Array(' ', '(', '-', '-', '.');
+				var maxphonelength = 12;
+				var phonevalue1;
+				var phonevalue2;
+				var cursorposition;
+
+				function ParseForNumber1(object){
+				phonevalue1 = ParseChar(object.value, zChar);
+				}
+				function ParseForNumber2(object){
+				phonevalue2 = ParseChar(object.value, zChar);
+				}
+
+				function backspacerUP(object,e) { 
+				if(e){ 
+				e = e 
+				} else {
+				e = window.event 
+				} 
+				if(e.which){ 
+				var keycode = e.which 
+				} else {
+				var keycode = e.keyCode 
+				}
+
+				ParseForNumber1(object)
+
+				if(keycode >= 48){
+				ValidatePhone(object)
+				}
+				}
+
+				function backspacerDOWN(object,e) { 
+				if(e){ 
+				e = e 
+				} else {
+				e = window.event 
+				} 
+				if(e.which){ 
+				var keycode = e.which 
+				} else {
+				var keycode = e.keyCode 
+				}
+				ParseForNumber2(object)
+				} 
+
+				function GetCursorPosition(){
+
+				var t1 = phonevalue1;
+				var t2 = phonevalue2;
+				var bool = false
+				for (i=0; i<t1.length; i++)
+				{
+				if (t1.substring(i,1) != t2.substring(i,1)) {
+				if(!bool) {
+				cursorposition=i
+				bool=true
+				}
+				}
+				}
+				}
+
+				function ValidatePhone(object){
+
+				var p = phonevalue1
+
+				p = p.replace(/[^\d]*/gi,"")
+
+				if (p.length < 2) {
+				object.value=p
+				} else if(p.length==2){
+				pp=p;
+				d4=p.indexOf('(')
+				d5=p.indexOf('-')
+				if(d4==-1){
+				
+				}
+				if(d5==-1){
+				pp=pp+"-";
+				}
+				object.value = pp;
+				} else if(p.length>2 && p.length < 6){
+			
+				l30=p.length;
+				p30=p.substring(0,3);
+				p30=p30+"-"
+
+				p31=p.substring(3,l30);
+				pp=p30+p31;
+
+				object.value = pp; 
+
+				} else if(p.length >= 6){
+			
+				l30=p.length;
+				p30=p.substring(0,3);
+				p30=p30+"-"
+
+				p31=p.substring(3,l30);
+				pp=p30+p31;
+
+				l40 = pp.length;
+				p40 = pp.substring(0,7);
+				p40 = p40 + "-"
+
+				p41 = pp.substring(7,l40);
+				ppp = p40 + p41;
+
+				object.value = ppp.substring(0, maxphonelength);
+				}
+
+				GetCursorPosition()
+
+				if(cursorposition >= 0){
+				if (cursorposition == 0) {
+				cursorposition = 2
+				} else if (cursorposition <= 2) {
+				cursorposition = cursorposition + 1
+				} else if (cursorposition <= 5) {
+				cursorposition = cursorposition + 2
+				} else if (cursorposition == 6) {
+				cursorposition = cursorposition + 2
+				} else if (cursorposition == 7) {
+				cursorposition = cursorposition + 4
+				e1=object.value.indexOf(')')
+				e2=object.value.indexOf('-')
+				if (e1>-1 && e2>-1){
+				if (e2-e1 == 4) {
+				cursorposition = cursorposition - 1
+				}
+				}
+				} else if (cursorposition < 11) {
+				cursorposition = cursorposition + 3
+				} else if (cursorposition == 11) {
+				cursorposition = cursorposition + 1
+				} else if (cursorposition >= 12) {
+				cursorposition = cursorposition
+				}
+
+				var txtRange = object.createTextRange();
+				txtRange.moveStart( "character", cursorposition);
+				txtRange.moveEnd( "character", cursorposition - object.value.length);
+				txtRange.select();
+				}
+
+				}
+
+				function ParseChar(sStr, sChar)
+				{
+				if (sChar.length == null) 
+				{
+				zChar = new Array(sChar);
+				}
+				else zChar = sChar;
+
+				for (i=0; i<zChar.length; i++)
+				{
+				sNewStr = "";
+
+				var iStart = 0;
+				var iEnd = sStr.indexOf(sChar[i]);
+
+				while (iEnd != -1)
+				{
+				sNewStr += sStr.substring(iStart, iEnd);
+				iStart = iEnd + 1;
+				iEnd = sStr.indexOf(sChar[i], iStart);
+				}
+				sNewStr += sStr.substring(sStr.lastIndexOf(sChar[i]) + 1, sStr.length);
+
+				sStr = sNewStr;
+				}
+
+				return sNewStr;
+				}
+			</script>
+
+	<!-- Custom Theme JavaScript -->
+	<script>
+    // Closes the sidebar menu
+    $("#menu-close").click(function(e) {
+        e.preventDefault();
+        if($("#sidebar-wrapper").hasClass("active")){
+        	$("#sidebar-wrapper").toggleClass("active");}
+    });
+
+    // Opens the sidebar menu
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+    
+    $('.form2').find('input, textarea').on('keyup blur focus', function (e) {
+    	  
+    	  var $this = $(this),
+    	      label = $this.prev('label');
+
+    		  if (e.type === 'keyup') {
+    				if ($this.val() === '') {
+    	          label.removeClass('active highlight');
+    	        } else {
+    	          label.addClass('active highlight');
+    	        }
+    	    } else if (e.type === 'blur') {
+    	    	if( $this.val() === '' ) {
+    	    		label.removeClass('active highlight'); 
+    				} else {
+    			    label.removeClass('highlight');   
+    				}   
+    	    } else if (e.type === 'focus') {
+    	      
+    	      if( $this.val() === '' ) {
+    	    		label.removeClass('highlight'); 
+    				} 
+    	      else if( $this.val() !== '' ) {
+    			    label.addClass('highlight');
+    				}
+    	    }
+
+    	});
+
+    	$('.tab2 a').click( function (e) {
+    	  
+    	  e.preventDefault();
+    	  
+    	  $(this).parent().addClass('active');
+    	  $(this).parent().siblings().removeClass('active');
+    	  
+    	  target = $(this).attr('target');
+
+    	  $('.tab-content2 > div').not(target).hide();
+    	  
+    	  $(target).fadeIn(600);
+    	  
+    	});
+
+    // Scrolls to the selected menu item on the page
+    $(function() {
+        $('a[href*=#]:not([href=#])').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });
+
+
+
+    </script>
+
+</body>
+
+</html>

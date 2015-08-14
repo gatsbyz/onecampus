@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+.img-main {
+	padding: 30px;
+}
+.btn.active, .btn:active {
+    color:#000bff;
+    -webkit-box-shadow: none;
+     box-shadow: none;
+}
