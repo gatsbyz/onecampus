@@ -6,11 +6,9 @@
 .project
 .settings
 bin
-.sencha
 .idea
 /build
 target
-dependency-reduced-pom.xml
 *.sublime-*
 /scratch
 .gradle
